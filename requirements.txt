@@ -1,0 +1,9 @@
+python-telegram-bot
+mega.py
+fastapi
+uvicorn
+requests
+py7zr
+rarfile
+boto3
+python-multipart
