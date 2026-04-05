@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  bot:
+    build: .
+    command: python bot.py
+    restart: always
+    volumes:
+      - ./downloads:/app/downloads
+
+  api:
+    build: .
+    command: uvicorn api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+
+  worker:
+    build: .
+    command: python worker.py
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
